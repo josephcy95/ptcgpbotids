@@ -639,7 +639,7 @@ AddFriends(renew := false, getFC := false) {
 						CreateStatusMessage("In failsafe for AddFriends4. " . failSafeTime "/45 seconds")
 					}
 					if(index != friendIDs.maxIndex()) {
-						FindImageAndClick(205, 430, 255, 475, , "Search2", 150, 50, 1500)
+						FindImageAndClick(205, 430, 255, 475, , "Search2", 150, 50) ;Danson
 						FindImageAndClick(0, 475, 25, 495, , "OK2", 138, 454)
 						EraseInput(index, n)
 					}
@@ -667,6 +667,7 @@ ChooseTag() {
 	}
 }
 
+;Danson
 EraseInput(num := 0, total := 0) {
 	if(num)
 		CreateStatusMessage("Removing friend ID " . num . "/" . total)
@@ -674,7 +675,9 @@ EraseInput(num := 0, total := 0) {
 	failSafeTime := 0
 	Loop {
 		FindImageAndClick(0, 475, 25, 495, , "OK2", 138, 454)
-		Loop 20 {
+		Loop 1 {
+			adbClick(80, 510)
+			adbClick(80, 510)
 			adbInputEvent("67")
 			Sleep, 10
 		}
@@ -2407,7 +2410,7 @@ DoTutorial() {
 	Loop ;select month and year and click
 	{
 		Delay(1)
-		if(FindImageAndClick(148, 384, 256, 419, , "Year", , , , 1, failSafeTime))
+		if(FindImageAndClick(148, 384, 235, 408, , "Year", , , , 1, failSafeTime)) ;Danson
 			break
 		Delay(1)
 		adbClick(142, 159)
@@ -2632,10 +2635,10 @@ DoTutorial() {
 		Delay(1)
 	}
 
-	Delay(1)
+	Delay(5) ;Danson
 	if(setSpeed > 2) {
 		FindImageAndClick(136, 420, 151, 436, , "Move", 134, 375, 500) ; click through until move
-		FindImageAndClick(50, 394, 86, 412, , "Proceed", 141, 483, 750) ;wait for menu to proceed then click ok. increased delay in between clicks to fix freezing on 3x speed
+		FindImageAndClick(50, 394, 86, 412, , "Proceed", 141, 483, 2000) ;Danson ;wait for menu to proceed then click ok. increased delay in between clicks to fix freezing on 3x speed
 	}
 	else {
 		FindImageAndClick(136, 420, 151, 436, , "Move", 134, 375) ; click through until move
